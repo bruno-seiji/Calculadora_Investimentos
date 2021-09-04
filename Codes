@@ -1,0 +1,193 @@
+Sub lucro()
+Dim JurosM As Double
+Dim Valor As Double
+Dim Valorm As Double
+Dim Total As Double
+Dim Tempo As Integer
+Dim JurosA As Double
+Dim i As Integer
+
+'-------------------------------------------
+'Modulo de Limpeza de Planilha
+Call limpar
+'-------------------------------------------
+
+Range("F1").Value = "Meses"
+Range("G1").Value = "Valores Acumulados"
+Range("A9").Select
+JurosA = Cells(2, 2).Value
+Valor = Cells(3, 2).Value
+Tempo = Cells(4, 2).Value + 1
+JurosM = ((1 + (JurosA / 100)) ^ (1 / 12)) - 1
+Cells(2, 7).Value = Cells(5, 2).Value
+
+For i = 3 To Tempo + 1
+Cells(i, 7).Value = (Cells(i - 1, 7).Value * JurosM) + Valor + Cells(i - 1, 7).Value
+Cells(i - 1, 6).Value = "Mês " & i - 3
+
+Next
+Cells(i - 1, 6).Value = "Mês " & i - 3
+
+'-------------------------------------------
+'Modulo de Criação de Tabela
+Call CriaTabela(i)
+'-------------------------------------------
+
+Total = Cells(i - 1, 7)
+Cells(6, 2).Value = Total
+Cells(7, 2).Value = (Cells(3, 2).Value * Cells(4, 2).Value) + Cells(5, 2).Value
+Cells(8, 2).Value = Cells(6, 2).Value - Cells(7, 2).Value
+Range("A9").Select
+
+End Sub
+
+'------------------------------------------------------------------------------------------------------------
+'Funções Limpar e Criar Tabela
+
+Sub CriaTabela(i As Integer)
+Range(Cells(1, 6), Cells(i - 1, 7)).Select
+Selection.Borders(xlDiagonalDown).LineStyle = xlNone
+    Selection.Borders(xlDiagonalUp).LineStyle = xlNone
+    With Selection.Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeTop)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeBottom)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeRight)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlInsideVertical)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlInsideHorizontal)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    Selection.Borders(xlDiagonalDown).LineStyle = xlNone
+    Selection.Borders(xlDiagonalUp).LineStyle = xlNone
+    With Selection.Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlEdgeTop)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlEdgeBottom)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlEdgeRight)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlInsideVertical)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlInsideHorizontal)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    
+Range(Cells(1, 6), Cells(1, 7)).Select
+    With Selection.Interior
+        .Pattern = xlSolid
+        .PatternColorIndex = xlAutomatic
+        .ThemeColor = xlThemeColorAccent1
+        .TintAndShade = 0.599993896298105
+        .PatternTintAndShade = 0
+    End With
+    Selection.Font.Bold = True
+Range(Cells(1, 6), Cells((i - 1), 6)).Select
+    With Selection.Interior
+        .Pattern = xlSolid
+        .PatternColorIndex = xlAutomatic
+        .ThemeColor = xlThemeColorAccent1
+        .TintAndShade = 0.599993896298105
+        .PatternTintAndShade = 0
+    End With
+    Selection.Font.Bold = True
+    
+Range(Cells(2, 7), Cells(i - 1, 7)).Select
+    With Selection.Interior
+        .Pattern = xlSolid
+        .PatternColorIndex = xlAutomatic
+        .ThemeColor = xlThemeColorAccent1
+        .TintAndShade = 0.799981688894314
+        .PatternTintAndShade = 0
+    End With
+    Selection.Font.Bold = True
+
+
+End Sub
+
+
+'-------------------------------------------------------------------
+
+Sub limpar()
+
+Range("G:G").Value = ""
+Range("F:F").Value = ""
+Range("G:G").Select
+Selection.Borders(xlDiagonalDown).LineStyle = xlNone
+    Selection.Borders(xlDiagonalUp).LineStyle = xlNone
+    Selection.Borders(xlEdgeLeft).LineStyle = xlNone
+    Selection.Borders(xlEdgeTop).LineStyle = xlNone
+    Selection.Borders(xlEdgeBottom).LineStyle = xlNone
+    Selection.Borders(xlEdgeRight).LineStyle = xlNone
+    Selection.Borders(xlInsideVertical).LineStyle = xlNone
+    Selection.Borders(xlInsideHorizontal).LineStyle = xlNone
+    With Selection.Interior
+        .Pattern = xlNone
+        .TintAndShade = 0
+        .PatternTintAndShade = 0
+    End With
+    Range("F:F").Select
+Selection.Borders(xlDiagonalDown).LineStyle = xlNone
+    Selection.Borders(xlDiagonalUp).LineStyle = xlNone
+    Selection.Borders(xlEdgeLeft).LineStyle = xlNone
+    Selection.Borders(xlEdgeTop).LineStyle = xlNone
+    Selection.Borders(xlEdgeBottom).LineStyle = xlNone
+    Selection.Borders(xlEdgeRight).LineStyle = xlNone
+    Selection.Borders(xlInsideVertical).LineStyle = xlNone
+    Selection.Borders(xlInsideHorizontal).LineStyle = xlNone
+    With Selection.Interior
+        .Pattern = xlNone
+        .TintAndShade = 0
+        .PatternTintAndShade = 0
+    End With
+End Sub
