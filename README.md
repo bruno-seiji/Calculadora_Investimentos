@@ -4,13 +4,15 @@
  
  Sendo:
  
- Inputs) * Juros mensal
-         * Valores Mensais (Valores investidos mensalmente durante tempo de aplicação)
-         * Tempo de Aplicação em meses
-         * Valor Inicial (Valor de investimento inicial)
+ Inputs)
+ * Juros mensal
+ * Valores Mensais (Valores investidos mensalmente durante tempo de aplicação)
+ * Tempo de Aplicação em meses
+ * Valor Inicial (Valor de investimento inicial)
          
          
-Outputs) * Total c/ Rendimentos (Valor total após final do tempo de aplicação)
-         * Total Aplicado (Valor Total aplicado ao final do tempo de aplicação)
-         * Rendimentos (Valor do lucro da aplicação)
-         * Tabela de Lucros mensais, mês à mês
+Outputs)
+* Total c/ Rendimentos (Valor total após final do tempo de aplicação)
+* Total Aplicado (Valor Total aplicado ao final do tempo de aplicação)
+* Rendimentos (Valor do lucro da aplicação)
+* Tabela de Lucros mensais, mês à mês
